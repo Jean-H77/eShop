@@ -17,9 +17,8 @@ public class ShopItemService {
 
     public ShopItemDto save(ShopItemDto shopItem) {
         var toSave = shopItemMapper.fromDto(shopItem);
-        System.out.println("Got thumbnail: " + toSave.getThumbnailUrl());
-
         shopItemRepository.save(toSave);
+
         return shopItemMapper.toDto(toSave);
     }
 
@@ -37,9 +36,19 @@ public class ShopItemService {
                 .collect(Collectors.toList());
     }
 
-    public ShopItemDto update(ShopItemDto shopItem) {
-        sh
+    public ShopItemDto update(ShopItemDto shopItem, Long id) {
+        var shopItemToUpdate = shopItemMapper.fromDto(shopItem);
+
+        var updatedShopItem = shopItemRepository.findById(id)
+                .map(shopItem1 -> {
+                    shopItem1.setThumbnailUrl(shopItemToUpdate.getThumbnailUrl());
+                    shopItem1.setName(shopItemToUpdate.getName());
+                    return shopItemRepository.save(shopItem1);
+                }).orElseGet(() -> shopItemRepository.save(shopItemToUpdate));
+
+        return shopItemMapper.toDto(updatedShopItem);
     }
+
     public void delete(Long id) {
         shopItemRepository.deleteById(id);
     }

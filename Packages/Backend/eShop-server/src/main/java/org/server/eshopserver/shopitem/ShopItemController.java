@@ -33,9 +33,9 @@ public class ShopItemController {
         return ResponseEntity.ok(shopItemService.findById(id));
     }
 
-    @PutMapping("/items")
-    ResponseEntity<ShopItemDto> updateShopItem(@RequestBody @Valid ShopItemDto shopItem) {
-
+    @PutMapping("/items/{id}")
+    ResponseEntity<ShopItemDto> updateShopItem(@RequestBody @Valid ShopItemDto shopItem, Long id) {
+        return ResponseEntity.ok(shopItemService.update(shopItem, id));
     }
 
     @DeleteMapping("/items/{id}")
