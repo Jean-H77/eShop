@@ -1,7 +1,7 @@
-package org.server.eshopserver.shopitem;
+package org.server.shopitem;
 
 import lombok.RequiredArgsConstructor;
-import org.server.eshopserver.shopitem.exception.ShopItemNotFoundException;
+import org.server.shopitem.exception.ShopItemNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +23,9 @@ public class ShopItemService {
     }
 
     public ShopItemDto findById(Long id) {
-        var shopItem = shopItemRepository.findById(id)
+        return shopItemRepository.findById(id)
+                .map(shopItemMapper::toDto)
                 .orElseThrow(() -> new ShopItemNotFoundException(id));
-
-        return shopItemMapper.toDto(shopItem);
     }
 
     public List<ShopItemDto> findAll() {

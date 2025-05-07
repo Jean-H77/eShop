@@ -1,4 +1,4 @@
-package org.server.eshopserver.order;
+package org.server.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

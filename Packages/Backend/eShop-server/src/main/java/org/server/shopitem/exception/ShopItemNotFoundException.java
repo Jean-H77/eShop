@@ -1,4 +1,4 @@
-package org.server.eshopserver.shopitem.exception;
+package org.server.shopitem.exception;
 
 public class ShopItemNotFoundException extends RuntimeException {
 

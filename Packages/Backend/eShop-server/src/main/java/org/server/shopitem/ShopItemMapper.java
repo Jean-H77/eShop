@@ -1,4 +1,4 @@
-package org.server.eshopserver.shopitem;
+package org.server.shopitem;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -6,8 +6,10 @@ import org.mapstruct.MappingConstants;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ShopItemMapper {
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "price", source = "price")
+    @Mapping(target = "thumbnailUrl", source = "thumbnailUrl")
     ShopItemDto toDto(ShopItem shopItem);
 
-    @Mapping(source = "thumbnailUrl", target = "thumbnailUrl") // needed even though they're the same name
     ShopItem fromDto(ShopItemDto shopItemDto);
 }

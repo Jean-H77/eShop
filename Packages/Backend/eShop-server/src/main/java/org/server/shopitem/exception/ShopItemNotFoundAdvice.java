@@ -1,4 +1,4 @@
-package org.server.eshopserver.shopitem.exception;
+package org.server.shopitem.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

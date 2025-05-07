@@ -1,4 +1,4 @@
-package org.server.eshopserver.shopitem;
+package org.server.shopitem;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
