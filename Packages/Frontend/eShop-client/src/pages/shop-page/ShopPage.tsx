@@ -21,10 +21,10 @@ export default function ShopPage() {
         <div style={{ width: '100%' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', p: 1, borderRadius: 1 }}>
                 <CategoryContext.Provider value={{ category, setCategory }}>
-                    <Box sx={{ width: '100%' }}>
+                    <Box>
                         <ShopItemCategoryMenu />
                     </Box>
-                    <Box sx={{ width: '100%', mt: 2 }}>
+                    <Box sx={{ mt: 2 }}>
                         <ShopItemList />
                     </Box>
                 </CategoryContext.Provider>
