@@ -3,11 +3,11 @@ import type {ShopItem} from "../types.ts";
 
 const BASE_URL = "http://localhost:8080/api/category";
 
-type ShopItemCategoryParams = {
+type ShopItemCategory = {
     id: number;
 };
 
-export const useGetShopItemsByPageCategory = ( { id } : ShopItemCategoryParams) => {
+export const useGetShopItemsByPageCategory = ( { id } : ShopItemCategory) => {
     return useQuery<ShopItem[]>({
         queryKey: [`shopItems_${id}`],
         queryFn: () =>
