@@ -7,11 +7,6 @@ export interface ShopItem {
     thumbnailUrl: string;
 }
 
-export interface CategoryType {
-    id: number;
-    name: string;
-}
-
 export interface CategoryContextType {
     category: number;
     setCategory: React.Dispatch<React.SetStateAction<number>>;
