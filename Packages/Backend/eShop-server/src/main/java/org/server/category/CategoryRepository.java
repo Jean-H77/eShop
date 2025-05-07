@@ -11,6 +11,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query("SELECT new org.server.category.CategoryNameIdDto(c.name, c.id) FROM Category c")
     List<CategoryNameIdDto> findAllCategoryNameId();
 
-    @Query("SELECT c.items FROM Category c WHERE c.id = :id")
+    @Query("SELECT i FROM Category c JOIN c.items i WHERE c.id = :id ORDER BY i.price")
     List<ShopItem> findItemsByCategoryId(@Param("id") Long id);
 }
