@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.server.category.exception.CategoryNotFoundException;
 import org.server.shopitem.ShopItemDto;
 import org.server.shopitem.ShopItemMapper;
-import org.server.shopitem.exception.ShopItemNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +40,9 @@ public class CategoryService {
         categoryRepository.save(toSave);
 
         return categoryMapper.toDto(toSave);
+    }
+
+    public void delete(Long id) {
+        categoryRepository.deleteById(id);
     }
 }
