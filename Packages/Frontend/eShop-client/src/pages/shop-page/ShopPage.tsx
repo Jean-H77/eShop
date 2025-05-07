@@ -3,6 +3,7 @@ import {Box} from "@mui/material";
 import ShopItemList from "./components/ShopItemList.tsx";
 import {createContext, useContext, useState} from "react";
 import type {CategoryContextType} from "./types.ts";
+import ShoppingCartCard from "./components/ShoppingCartCard.tsx";
 
 export const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
 
@@ -18,18 +19,24 @@ export default function ShopPage() {
     const [category, setCategory] = useState<number>(1);
 
     return (
-        <div style={{ width: '100%' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', p: 1, borderRadius: 1 }}>
-                <CategoryContext.Provider value={{ category, setCategory }}>
-                    <Box>
-                        <ShopItemCategoryMenu />
-                    </Box>
-                    <Box sx={{ mt: 2 }}>
-                        <ShopItemList />
-                    </Box>
-                </CategoryContext.Provider>
-            </Box>
-        </div>
+        <Box sx={{ display: 'flex', p: 1, borderRadius: 1, width: '100%' }}>
+            <CategoryContext.Provider value={{ category, setCategory }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flexGrow: 1 }}>
+                    <ShopItemCategoryMenu />
+                    <ShopItemList />
+                </Box>
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        top: 32,
+                        right: 32,
+                        zIndex: 1300,
+                    }}
+                >
+                    <ShoppingCartCard />
+                </Box>
+            </CategoryContext.Provider>
+        </Box>
     );
 }
 

@@ -16,7 +16,7 @@ function ShopItemList(){
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             {items.map((item) => (
                 <Grid key={item.id}>
-                    <ShopItemCard shopItem={item}/>
+                    <ShopItemCard shopItem={item} />
                 </Grid>
             ))}
         </Grid>

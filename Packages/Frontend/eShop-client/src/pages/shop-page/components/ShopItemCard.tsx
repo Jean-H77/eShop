@@ -12,7 +12,7 @@ function ShopItemCard ({ shopItem }: ShopItemCardProps) {
             <CardMedia
                 sx={{ height: 150 }}
                 image={shopItem.thumbnailUrl}
-                title={shopItem.name}/>
+                title={shopItem.name} />
             <CardContent>
                 <Typography gutterBottom variant="subtitle1" component="div">
                     {shopItem.name}
