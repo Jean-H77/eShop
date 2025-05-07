@@ -39,7 +39,8 @@ public class ShopItemController {
     }
 
     @DeleteMapping("/items/{id}")
-    void deleteShopItem(@PathVariable Long id) {
+    ResponseEntity<Void> deleteShopItem(@PathVariable Long id) {
         shopItemService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
