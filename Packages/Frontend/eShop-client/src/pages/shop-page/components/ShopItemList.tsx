@@ -1,14 +1,17 @@
-import React from 'react';
-import type {ShopItem} from "../types.ts";
-import ShopItemCard from "./ShopItemCard.tsx";
 import {Grid} from "@mui/material";
+import {useCategoryContext} from "../ShopPage.tsx";
+import {useGetShopItemsByPageCategory} from "../hooks/useGetShopItemsByPageCategory.ts";
+import ShopItemCard from "./ShopItemCard.tsx";
 
-type ShopItemListProps = {
-    items: ShopItem[];
-};
 
+function ShopItemList(){
 
-const ShopItemList: React.FC<ShopItemListProps> = ({ items }) => {
+    const { category } = useCategoryContext();
+    const {  data: items = [], isLoading, error  } = useGetShopItemsByPageCategory({ id: category });
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error loading items.</div>;
+
     return (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             {items.map((item) => (
@@ -18,7 +21,7 @@ const ShopItemList: React.FC<ShopItemListProps> = ({ items }) => {
             ))}
         </Grid>
     );
-};
+}
 
 
 export default ShopItemList;

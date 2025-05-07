@@ -1,9 +1,12 @@
 import type { ShopItem } from "../types.ts";
-import React from "react";
 import {Card, CardActions, CardContent, CardMedia, IconButton, TextField, Typography} from "@mui/material";
 import {AddShoppingCart, RemoveShoppingCart} from "@mui/icons-material";
 
-const ShopItemCard: React.FC<{ shopItem: ShopItem }> = ({ shopItem }) => {
+interface ShopItemCardProps {
+    shopItem: ShopItem;
+}
+
+function ShopItemCard ({ shopItem }: ShopItemCardProps) {
     return (
         <Card sx={{ maxWidth: 250, boxShadow: 3 }}>
             <CardMedia
