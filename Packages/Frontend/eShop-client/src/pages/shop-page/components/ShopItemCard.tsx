@@ -49,6 +49,6 @@ function ShopItemCard ({ shopItem }: ShopItemCardProps) {
             </CardActions>
         </Card>
     );
-};
+}
 
 export default ShopItemCard;
